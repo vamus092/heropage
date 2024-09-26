@@ -1,6 +1,6 @@
-import * as THREE from "three"
+import * as THREE from "three";
 import React, {useState,useEffect,useRef} from "react"
-import { useAnimation,useGLTF } from "framer-motion" "@react-three/drei"
+import { useAnimations,useGLTF,perspectiveCamera } from "@react-three/drei";
 import {useFrame} from "@react-three/fiber";
 
 const color=new THREE.Color();
@@ -8,16 +8,15 @@ const color=new THREE.Color();
 export const Model=({scroll,...props})=>{
 
 const group=useRef();
-const{node,materials,animations }=useGLTF("/head=shot.glb");
-const{animations}=useAnimation(animations,group);
+const{nodes,materials,animations }=useGLTF("/head-shot.glb");
+const{animation}=useAnimations(animations,group);
 const [hover, setHover] = useState(false);
 
 const extras={
     "material-envMapInternsity":0.2,
 };
 useEffect(
-(=>void(actions["CameraAction.005"].play().paused=true),[]
-)
+()=>void(actions["CameraAction.005"].play().paused=true),[]
 );
 
 useEffect(()=>{
@@ -49,9 +48,9 @@ useEffect(()=>{
         <group ref={group}{...props}dispose={null}>
             <group
                 onPointerOver={(e)=>(e.stopPropagation(),set(e.object.name))}
-                onPointerOver={(e)=>(e.stopPropagation(),set(null))}
+                onPointerOut={(e)=>(e.stopPropagation(),set(null))}
                 position={[0.06,4.04,0.35]}
-                scale={[0.25.0.25,0.25]}>
+                scale={[0.2,0.25,0.25]}>
 
                         <mesh
                             name="Headphones"
