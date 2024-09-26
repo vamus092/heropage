@@ -7,7 +7,7 @@ export const Overlay=forwardRef(({ },ref)=>(
     <div
         ref={ref}
         class ="scroll"
-        onScroll {(e)=>{
+        onScroll= {(e)=>{
 
                 scroll.current=e.target.scrolltop/(e.target.scrollHeight-window.innerHeight);
                 caption.current.innerText=scroll.current.toFixed(2);
