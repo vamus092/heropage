@@ -30,7 +30,7 @@ useEffect(()=>{
         actions["CameraAction.005"].time=THREE.MathUtils.lerp(actions["CameraAction.005".time,actions["CameraAction.005"].getClip().duration*scroll.current,0.05]
     );
 
-    group.current.children[0].children.foreach((child,index)=>{
+    group.current.children[0].children.forEach((child,index)=>{
         child,material.color.lerp(color.set(hover===child.name?"tomato":"#202020"),
 
             hover?0.1:0.05,
